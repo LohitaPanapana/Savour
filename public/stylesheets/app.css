@@ -1,0 +1,92 @@
+html, body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #e4e4e4;
+}
+
+.navbar-brand{
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    transition: font-weight 2s ease-in-out;
+}
+
+.navbar-dark .navbar-brand:hover{
+    font-weight: 800;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+    margin-right: 1rem;
+}
+
+.jumbotron{
+    background-image: url('https://images.unsplash.com/photo-1481833761820-0509d3217039?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    color: rgba(255, 255, 255, 0.7);
+    background-position: center bottom;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#special{
+    border: 3px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#special:hover{
+    color: #dc3545;
+    background-color: #fff;
+}
+
+.content{
+    margin-bottom: 40px;
+}
+
+.content h5{
+    font-weight: 800;
+}
+
+.content img{
+    height: 250px;
+}
+
+.main{
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: #fff;
+    -webkit-box-shadow: 10px 11px 11px -9px rgba(182,182,182,1);
+    -moz-box-shadow: 10px 11px 11px -9px rgba(182,182,182,1);
+    box-shadow: 10px 11px 11px -9px rgba(182,182,182,1);
+}
+
+.header-img{
+    width: 100%;
+    height: 400px;
+}
+
+#map{
+    width : 100%;
+    height: 400px;
+}
+
+.main p{
+    padding-left: 5rem;
+    font-size: 1rem;
+}
+
+.main hr{
+    width: 70%;
+}
+
+.card{
+    font-family: Literata;
+}
+
+.card-body hr{
+    border: 1px solid #000;
+}

@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class="container-fluid">
+    <header class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">Restaurateurs Join Us</h1>
+            <a href="/restaurants/new" class="btn btn-outline-primary">JOIN US</a>
+        </div>
+    </header>
+    <div class="row">
+        <% restaurants.forEach(function(restaurant){ %>
+            <div class="col-md-6 content">
+                <div class="row main d-flex align-items-center justify-content-center">
+                    <div class="col-md-6 col-sm p-0">
+                        <img src="<%= restaurant.image %>" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 col-sm py-2">
+                        <h5><%= restaurant.name.toUpperCase() %></h5>
+                        <span class="text-muted"><%= restaurant.cuisine %></span>
+                        <hr/>
+                        <a href="/restaurants/<%= restaurant._id %>" class="btn btn-sm btn-outline-primary mb-2">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<% include ../partials/footer %>
