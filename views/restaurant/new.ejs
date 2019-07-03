@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row my-2 d-flex justify-content-center align-items-center">
+        <div class="col-8">
+            <div class="formMain">
+                <h2 class="text-center mb-3">Join Our Community</h2>
+                <form action="/restaurants" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="restaurant[name]" id="name" placeholder="Avenue Center">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="text" class="form-control" name="restaurant[image]" id="image" placeholder="https://image.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisine">Cuisine</label>
+                        <input type="text" class="form-control" name="restaurant[cuisine]" id="cuisine" placeholder="Cuisine offered">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="restaurant[location]" id="location" placeholder="X Road, near Great Mall, Australia">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="number" class="form-control" name="restaurant[phone]" placeholder="2345674356">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="restaurant[description]" rows="5" id="description">What describe you the best</textarea>
+                    </div>
+                    <button class="btn btn-info mr-2">Submit</button>
+                    <a class="btn btn-danger" href="/restaurants">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

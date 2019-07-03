@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row my-2 d-flex justify-content-center align-items-center">
+        <div class="col-8">
+            <div class="formMain">
+                <h2 class="text-center mb-3">Edit <%= restaurant.name %></h2>
+                <form action="/restaurants/<%= restaurant._id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="restaurant[name]" id="name" value="<%= restaurant.name %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="text" class="form-control" name="restaurant[image]" id="image" value="<%= restaurant.image %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="cuisine">Cuisine</label>
+                        <input type="text" class="form-control" name="restaurant[cuisine]" id="cuisine" value="<%= restaurant.cuisine %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="restaurant[location]" id="location" value="<%= restaurant.location %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="number" class="form-control" name="restaurant[phone]" value="<%= restaurant.phone %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" name="restaurant[description]" rows="5" id="description"><%= restaurant.description %></textarea>
+                    </div>
+                    <button class="btn btn-success mr-2">Save</button>
+                    <a class="btn btn-danger" href="/restaurants/<%= restaurant._id %>">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -6,7 +6,11 @@ var restaurantSchema = new mongoose.Schema({
     description: String,
     location: String,
     cuisine: String,
-    phone: Number
+    phone: Number,
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review"
+    }]
 });
 
 module.exports = mongoose.model("Restaurant", restaurantSchema);
