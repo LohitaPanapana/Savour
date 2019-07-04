@@ -21,12 +21,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar-content">
                 <ul class="navbar-nav ml-auto mr-5">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LOGIN</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="special" href="#">SIGN UP</a>
-                    </li>
+                    <% if(currentUser){ %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">LOGOUT</a>
+                        </li>
+                    <% } else{  %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="special" href="/register">SIGN UP</a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
         </div>

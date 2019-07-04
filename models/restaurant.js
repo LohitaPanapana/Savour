@@ -7,6 +7,13 @@ var restaurantSchema = new mongoose.Schema({
     location: String,
     cuisine: String,
     phone: Number,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    },
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Review"
