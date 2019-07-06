@@ -93,7 +93,7 @@ app.get("/restaurants/:id", function(req, res){
 });
 
 //Edit route
-app.get("/restaurants/:id/edit", isLoggedIn, function(req, res){
+app.get("/restaurants/:id/edit", checkRestaurantOwnership, function(req, res){
     restaurant.findById(req.params.id, function(err, foundRestaurant){
         if(err){
             console.log(err);
@@ -103,7 +103,7 @@ app.get("/restaurants/:id/edit", isLoggedIn, function(req, res){
 })
 
 //Update route
-app.put("/restaurants/:id", isLoggedIn, function(req, res){
+app.put("/restaurants/:id", checkRestaurantOwnership, function(req, res){
    restaurant.findByIdAndUpdate(req.params.id, req.body.restaurant, function(err, updatedRestaurant){
        if(err){
            console.log(err);
@@ -113,7 +113,7 @@ app.put("/restaurants/:id", isLoggedIn, function(req, res){
 });
 
 //Delete route
-app.delete("/restaurants/:id", isLoggedIn, function(req, res){
+app.delete("/restaurants/:id", checkRestaurantOwnership, function(req, res){
     restaurant.findByIdAndRemove(req.params.id,function(err){
         if(err){
             console.log(err);
@@ -156,7 +156,7 @@ app.post("/restaurants/:id/reviews", isLoggedIn, function(req, res){
 });
 
 //Comment edit route
-app.get("/restaurants/:id/reviews/:review_id/edit", isLoggedIn, function(req, res){
+app.get("/restaurants/:id/reviews/:review_id/edit", checkReviewOwnerShip, function(req, res){
     review.findById(req.params.review_id, function(err, fetchedReview){
         if(err){
             console.log("err");
@@ -167,7 +167,7 @@ app.get("/restaurants/:id/reviews/:review_id/edit", isLoggedIn, function(req, re
 });
 
 //Comment update route
-app.put("/restaurants/:id/reviews/:review_id", isLoggedIn, function(req, res){
+app.put("/restaurants/:id/reviews/:review_id", checkReviewOwnerShip, function(req, res){
     review.findByIdAndUpdate(req.params.review_id, req.body.review, function(err, review){
         if(err){
             console.log(err);
@@ -177,7 +177,7 @@ app.put("/restaurants/:id/reviews/:review_id", isLoggedIn, function(req, res){
 });
 
 //Comment delete route
-app.delete("/restaurants/:id/reviews/:review_id", isLoggedIn, function(req, res){
+app.delete("/restaurants/:id/reviews/:review_id", checkReviewOwnerShip, function(req, res){
     review.findByIdAndRemove(req.params.review_id, function(err){
         if(err){
             console.log(err);
@@ -216,7 +216,7 @@ app.post("/login", passport.authenticate("local",{
 
 app.get("/logout", function(req, res){
     req.logout();
-    res.redirect("/");
+    res.redirect("/restaurants");
 })
 
 //Middleware
@@ -225,6 +225,43 @@ function isLoggedIn(req, res, next){
         return next();
     }
     res.redirect("/");
+}
+
+function checkRestaurantOwnership(req, res, next){
+    if(req.authenticated()){
+        restaurant.findById(req.params.id, function(err, foundRestaurant){
+            if(err){
+                console.log(err);
+            }
+            else{
+                if(currentUser.author.id.equals(req.user.id)){
+                    next();
+                } else{
+                    console.log("You want have permission");
+                }
+            }
+        })
+    } else{
+        console.log("You must be logged in");
+    }
+}
+
+function checkReviewOwnerShip(req, res, next){
+    if(req.isAuthenticated()){
+        review.findById(req.params.review_id, function(err, foundReview){
+            if(err){
+                console.log(err);
+            } else {
+                if(foundReview.author.id.equals(req.user._id)){
+                    next();
+                } else{
+                    res.redirect("/");
+                }
+            }
+        })
+    } else{
+        res.redirect("/");
+    }
 }
 
 //Server setting
