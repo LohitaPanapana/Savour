@@ -80,6 +80,7 @@ body{
 
 .card{
     font-family: Literata;
+    overflow: hidden;
 }
 
 .card-body hr{
@@ -153,4 +154,46 @@ body{
 .btnSmall:hover {
     padding: 0.25rem;
     border: none;
+}
+
+.card-header{
+    margin-top: 5px;
+    background-color: #fff;
+}
+
+.card-img-top{
+    transition: transform 0.5s ease;
+}
+
+.card-img-top:hover{
+    transform: scale(1.05);
+}
+
+.stars-outer{
+    display: inline-block;
+    position: relative;
+    font-family: 'Font Awesome 5 Free';
+}
+
+.stars-outer::before{
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-weight: 900;
+    color: #ccc;
+    font-size: 1.25rem;
+}
+
+.stars-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 0;
+    white-space: nowrap;
+}
+
+.stars-inner::before{
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #f8ce0b;
+    font-weight: 900;
+    font-size: 1.25rem;
 }

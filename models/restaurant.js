@@ -7,6 +7,7 @@ var restaurantSchema = new mongoose.Schema({
     location: String,
     cuisine: String,
     phone: Number,
+    rating: Number,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

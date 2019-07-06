@@ -22,6 +22,11 @@
                 <img class="card-img-top" src="<%= restaurant.image %>">
                 <div class="card-body">
                     <h3 class="card-title"><%= restaurant.name %></h3>
+                    <div class="stars-outer">
+                        <div class="stars-inner">
+                        </div>
+                    </div>
+                    <p><%= restaurant.rating %></p>
                     <% if(currentUser && restaurant.author.id.equals(currentUser.id)){ %>
                         <div class="justify-content-end d-flex">
                             <a href="/restaurants/<%= restaurant._id %>/edit" class="btn btn-outline-secondary btn-sm mr-1">Edit</a>
@@ -55,6 +60,7 @@
                                         <% } %>
                                     </span>
                                     <p class="card-text"><%= review.rating %></p>
+                                    <span><%= moment(review.createdAt).fromNow() %></span>
                                     <p class="reviews"><%= review.content %></p>
                                 </div>
                             </div>
@@ -67,7 +73,7 @@
     </div>
 </div>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
       
     window.onload = function() {
         L.mapquest.key = 'jirmVSi3nFO5SZJW52TpgIKekAz6F8Vk';
@@ -80,6 +86,10 @@
         var location = "<%= restaurant.location %>";
         L.mapquest.geocoding().geocode(location);
     }
-</script> -->
+
+    var ratingPercentage = ("<%= restaurant.rating %>"/5) * 100;
+    var ratingPercentageRounded = (Math.round(ratingPercentage/10) * 10)+ '%';
+    document.querySelector(".stars-inner").style.width = ratingPercentageRounded;
+</script>
 
 <% include ../partials/footer %>
