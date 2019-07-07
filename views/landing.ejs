@@ -1,5 +1,29 @@
 <% include partials/header %>
 
-<h1>Landing page</h1>
-
+<div id="imageSlide" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1504113888839-1c8eb50233d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1015&q=80" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1490457843367-34b21b6ccd85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=769&q=60" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="https://images.unsplash.com/photo-1481671703460-040cb8a2d909?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Last slide">
+        </div> 
+    </div>
+    <div class="heading">
+        <h1 class="display-3">Welcome to Savour</h1>
+        <p class="lead">Treat yourself with the best</p>
+        <form action="/restaurants" method="GET">
+            <div class="form-group row">
+                <input type="text" class="form-control offset-1 col-8" name="search" placeholder="Find restaurants" title="Location, restaurants or cuisine">
+                <button class="btn btn-success ml-1 col-2">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
 <% include partials/footer %>

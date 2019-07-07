@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 order-2 order-md-1">
             <div class="details px-3 pt-5 p-2 m-2">
                 <p><a href="/restaurants" class="btn btn-outline-primary btn-sm px-4">Back</a></p>
                 <hr/>
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 order-1 order-md-2">
             <div class="card m-2">
                 <img class="card-img-top" src="<%= restaurant.image %>">
                 <div class="card-body">
@@ -76,7 +76,7 @@
 <script type="text/javascript">
       
     window.onload = function() {
-        L.mapquest.key = 'jirmVSi3nFO5SZJW52TpgIKekAz6F8Vk';
+        L.mapquest.key = "<%= process.env.MAP_KEY %>";
 
         var map = L.mapquest.map('map', {
         center: [0, 0],

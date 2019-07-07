@@ -197,3 +197,29 @@ body{
     font-weight: 900;
     font-size: 1.25rem;
 }
+
+.heading{
+    text-align: center;
+    padding-top: 30vh;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    text-shadow: 2px 2px 8px #000;
+}
+
+.form-inline{
+    justify-content: center;
+}
+
+#imageSlide{
+    background-color: #000;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

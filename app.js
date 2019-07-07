@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express     = require('express'),
 app             = express(),
 mongoose        = require('mongoose'),
@@ -45,13 +46,24 @@ app.get("/", function(req, res){
 
 //Index route
 app.get("/restaurants", function(req, res){
-    restaurant.find({}, function(err, foundRestaurants){
-        if(err){
-            req.flash("error", "Something went wrong");
-            redirect("back");
-        } 
-        res.render("restaurant/index", {restaurants : foundRestaurants});
-    })
+    if(req.query.search){
+        const regexString = new RegExp(escapeRegex(req.query.search), 'gi');
+        restaurant.find({$or: [{"location" : regexString},{ "name" : regexString},{ "cuisine" : regexString}]}, function(err, foundRestaurants){
+            if(err){
+                req.flash("error", "Something went wrong");
+                redirect("back");
+            } 
+            res.render("restaurant/index", {restaurants : foundRestaurants});
+        })
+    } else{
+        restaurant.find({}, function(err, foundRestaurants){
+            if(err){
+                req.flash("error", "Something went wrong");
+                redirect("back");
+            } 
+            res.render("restaurant/index", {restaurants : foundRestaurants});
+        })
+    }
 });
 
 //New route
@@ -243,7 +255,7 @@ function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect("/");
+    res.redirect("/restaurants");
 }
 
 function checkRestaurantOwnership(req, res, next){
@@ -287,6 +299,10 @@ function checkReviewOwnerShip(req, res, next){
         res.redirect("back");
     }
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 //Server setting
 app.listen(process.env.PORT || 3000, function(){
